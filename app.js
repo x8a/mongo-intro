@@ -27,7 +27,8 @@ mongoose
 app.get("/", (req, res, next) => res.render("index"))
 
 app.post("/create-student", (req, res, next) => {
-    // Collect data
+    // Create the model
+    const Student = mongoose.model("Student", { name: String, surname: String, age: Number });
     // Save the students in mongo
     console.log(req.body)
     res.render("index");
