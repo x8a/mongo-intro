@@ -29,7 +29,13 @@ app.get("/", (req, res, next) => res.render("index"))
 app.post("/create-student", (req, res, next) => {
     // Create the model
     const Student = mongoose.model("Student", { name: String, surname: String, age: Number });
+    const myStudent = new Student({name: req.body.name, surname: req.body.surname, age: req.body.age})
+    
     // Save the students in mongo
+    myStudent.save()
+    .then(() => console.log(`Student stored successfully: ${myStudent}`))
+    .catch(err => console.log(`Error when creating a student: ${err}`))
+    
     console.log(req.body)
     res.render("index");
 })
