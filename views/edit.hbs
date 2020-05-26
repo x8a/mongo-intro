@@ -1,0 +1,20 @@
+<h1>Edit Student's data</h1>
+
+<form action="/save-student" method="POST">
+    <input type="hidden" name="_id" value="{{_id}}"/>
+    <label for="name">Name</label>
+    <br>
+    <input type="text" name="name" class="form-input" placeholder="Enter your name" value="{{name}}"/>
+    <br>
+    <label for="surname">Surname</label>
+    <br>
+    <input type="text" name="surname" class="form-input" placeholder="Enter your surame" value="{{surname}}"/>
+    <br>
+    <label for="age">Age</label>
+    <br>
+    <input type="number" name="age" class="form-input" placeholder="Enter your age" value="{{age}}"/>
+    <br>
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>
+
+<a class="btn btn-success" href="/list">Return to list</a>

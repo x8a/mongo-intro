@@ -1,5 +1,20 @@
 <h1>Enrolled Students</h1>
 
-{{#each student}}
-<p>{{name}} {{surname}} {{age}}</p>
-{{/each}}
+<table class="table" width="100%">
+    <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Age</td>
+        <td>Edit</td>
+        <td>Remove</td>
+    </tr>
+    {{#each students}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{surname}}</td>
+        <td>{{age}}</td>
+        <td><a href="/edit?_id={{_id}}" class="btn btn-primary">Edit Student</a></td>
+        <td><a href="/delete?_id={{_id}}" class="btn btn-danger" style="color:white">Remove student</a></td>
+    </tr>
+    {{/each}}
+</table>

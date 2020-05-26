@@ -48,8 +48,28 @@ app.post("/create-student", (req, res, next) => {
 
 app.get("/list", (req, res, next) => {
     Student.find()
-    .then(student => res.render("list", {student}))
+    .then(students => res.render("list", {students}))
     .catch((err) => console.error(`Error when finding students: ${err}`));
+})
+
+app.get("/edit", (req, res, next) => {
+  Student.findById(req.query._id)
+  .then(student => {
+    res.render("edit", student)
+  })
+  .catch(e => console.log(`Error when trying to edit the student ${student}: ${e}`))
+})
+
+app.post("/save-student", (req, res, next) => {
+  Student.findByIdAndUpdate(req.body._id, req.body)
+    .then(() => res.render("success"))
+    .catch(e => console.log(`Error when trying to update the student ${student}: ${e}`))
+})
+
+app.get("/delete", (req, res, next) => {
+  Student.findByIdAndDelete(req.query._id)
+  .then(student => res.render("success"))
+  .catch(e => console.log(`Error when trying to delete the student ${student}: ${e}`))
 })
 
 app.listen(3000, () => console.log("Server running on port 3000"))
